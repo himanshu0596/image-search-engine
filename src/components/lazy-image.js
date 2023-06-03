@@ -1,12 +1,16 @@
 import React from 'react';
 import LazyLoad from 'react-lazyload';
-import '../styles/lazy-image.css'
 
-const LazyImage = ({ src, alt, heightWidthClass }) => {
+const LazyImage = ({ src, alt, screenWidth }) => {
+
+  const styles = {
+    width: `${screenWidth}px`,
+    height: 'auto'
+  };
 
   return (
     <LazyLoad>
-      <img src={src} alt={alt} className={heightWidthClass} />
+      <img src={src} alt={alt} style={styles} />
     </LazyLoad>
   );
 };

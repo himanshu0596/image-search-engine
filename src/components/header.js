@@ -6,7 +6,7 @@ const Header = (props) => {
   return (
     <header className={ `${props.paddingClass} headerStyle`}>
       <nav className="navStyle">
-        <div className="logoStyle">Your Logo</div>
+        <div className="logoStyle">Logo</div>
         <form onSubmit={props.handleSearchSubmit} className="formStyle">
           <input
             type="text"

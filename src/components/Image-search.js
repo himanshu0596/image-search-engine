@@ -46,20 +46,6 @@ useEffect(()=>{
 
 }, [query])
 
-
-const getImageSize = () => {
-    if (screenWidth < 600) {
-        // Small screen size
-        return 'Small'
-    } else if (screenWidth >= 600 && screenWidth < 1200) {
-        // Medium screen size
-        return 'Medium'
-    } else {
-        // Large screen size
-        return 'Large'
-    }
-};
-
 const fetchImages = async () => {
     // Make a GET request to the Unsplash API 
     await axios.get(`https://api.unsplash.com/search/photos?query=${query}&page=${page}`, { 
@@ -88,11 +74,9 @@ const handleSubmit = event => {
     fetchImages();
 };
 
-const imageSize = getImageSize();
-
 return (
     <div>
-        <Header handleSearchSubmit={handleSubmit} handleSearchChange={handlelnputChange} searchValue={query} paddingClass={imageSize === 'Small' && 'headerPaddingSmall'}/>
+        <Header handleSearchSubmit={handleSubmit} handleSearchChange={handlelnputChange} searchValue={query} paddingClass={screenWidth <= 900 && 'headerPaddingSmall'}/>
 
         <InfiniteScroll
             dataLength={images.length} next={fetchImages} hasMore={true}
@@ -104,7 +88,7 @@ return (
                     key={image.id}
                     src={image.urls.regular} 
                     alt={image.alt_description} 
-                    heightWidthClass={`heightWidth${imageSize}`}
+                    screenWidth={screenWidth}
                     />
                 ))
             } 
