@@ -4,7 +4,7 @@ import '../styles/header.css'
 const Header = (props) => {
 
   return (
-    <header className="headerStyle">
+    <header className={ `${props.paddingClass} headerStyle`}>
       <nav className="navStyle">
         <div className="logoStyle">Your Logo</div>
         <form onSubmit={props.handleSearchSubmit} className="formStyle">

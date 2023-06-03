@@ -1,0 +1,14 @@
+.heightWidthLarge {
+    width: 600px;
+    height: 600px;
+}
+
+.heightWidthMedium {
+    width: 400px;
+    height: 400px;
+}
+
+.heightWidthSmall {
+    width: 200px;
+    height: 200px;
+}
