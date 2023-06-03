@@ -1,5 +1,5 @@
 import './App.css';
-import ImageSearch from './components/ImageSearch';
+import ImageSearch from './components/Image-search';
 
 function App() {
   return (

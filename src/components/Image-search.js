@@ -2,6 +2,7 @@ import React, {useState, useEffect } from 'react';
 import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Header from './header';
+import LazyImage from './lazy-image';
 
 function ImageSearch() { 
 // State variables
@@ -62,20 +63,17 @@ return (
     <div>
         <Header handleSearchSubmit={handleSubmit} handleSearchChange={handlelnputChange} searchValue={query}></Header>
 
-        <InfiniteScroll
-        dataLength={images.length} next={fetchImages} hasMore={true}
-        loader={<h4>Loading..</h4>}
-        >
+        <div>
             {
                 images.map(image => ( 
-                    <img 
+                    <LazyImage 
                     key={image.id}
-                    src={image.urls.small} 
+                    src={image.urls.regular} 
                     alt={image.alt_description} 
                     />
                 ))
             } 
-        </InfiniteScroll>
+        </div>
     </div>
 )
  
