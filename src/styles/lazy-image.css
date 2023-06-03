@@ -1,0 +1,14 @@
+.descriptionParagraph {
+    color: white; 
+    width: -webkit-fill-available; 
+    font-family: cursive; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.imageContainer {
+    background-color: black; 
+    display: flex; 
+    border-bottom: 10px solid white;
+}

@@ -3,6 +3,7 @@ import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Header from './header';
 import LazyImage from './lazy-image';
+import ErrorPage from './error-page';
 
 function ImageSearch() { 
 // State variables
@@ -11,6 +12,7 @@ const [images, setImages] = useState ([]);
 const [page, setPage] = useState (1);
 const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 const [searchInitiated, setSearchInitiated] = useState(false)
+const [hasError, setHasError] = useState(false)
 
 useEffect(() => {
     // Fetch initial images when the component mounts 
@@ -58,9 +60,18 @@ const fetchImages = async () => {
     .then(response => {
         // Update the images state with the new results
         setImages(prevlmages => [...prevlmages, ...response.data.results]);
+
+        // Updating the page number everytime infinite scroll component calls the fetchImages passed in the next which is triggered everytime scroll reaches bottom
         setPage(prevPage => prevPage+1 )
+
+        // Updating hasError state to true as now we have got the succesful response
+        setHasError(false)
     })
-    .catch(error => { console.log(error);
+    .catch(error => { 
+        console.log(error);
+
+        // Updating hasError state to false has now we have got the unsuccessful response, and false state will render error component on screen
+        setHasError(true);
     });
 }
 
@@ -81,23 +92,26 @@ return (
     <div>
         <Header handleSearchSubmit={handleSubmit} handleSearchChange={handlelnputChange} searchValue={query} paddingClass={screenWidth <= 900 && 'headerPaddingSmall'}/>
 
-        { searchInitiated ?
+        { searchInitiated && !hasError ?
             <InfiniteScroll
                 dataLength={images.length} next={fetchImages} hasMore={true}
                 loader={<h4>Loading..</h4>}
             >
                 {
-                    images.map(image => ( 
+                    images.map((image, index) => ( 
                         <LazyImage 
                         key={image.id}
                         src={image.urls.regular} 
                         alt={image.alt_description} 
                         screenWidth={screenWidth}
+                        index={index}
                         />
                     ))
                 } 
-            </InfiniteScroll> :
+            </InfiniteScroll> : 
+            searchInitiated && hasError ? <ErrorPage/> :
             <h4>Try to search an image...</h4>
+
         }
     </div>
 )
