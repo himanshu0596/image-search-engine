@@ -4,6 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Header from './header';
 import LazyImage from './lazy-image';
 import ErrorPage from './error-page';
+import InitialPage from './initial-page';
 
 function ImageSearch() { 
 // State variables
@@ -110,7 +111,7 @@ return (
                 } 
             </InfiniteScroll> : 
             searchInitiated && hasError ? <ErrorPage/> :
-            <h4>Try to search an image...</h4>
+            <InitialPage/>
 
         }
     </div>

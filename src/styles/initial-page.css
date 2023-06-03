@@ -1,4 +1,4 @@
-.error-page {
+.initial-page {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,15 +8,15 @@
     background-color: #141414;
   }
   
-  .error-page__title {
+  .initial-page__title {
     font-size: 36px;
-    color: #ff0000;
+    color: green;
     margin-bottom: 10px;
   }
   
-  .error-page__message {
-    font-size: 18px;
-    color: #757575;
+  .initial-page__message {
+    font-size: x-large;
+    color: white;
     margin-bottom: 5px;
     font-weight: bold;
     font-family: monospace
