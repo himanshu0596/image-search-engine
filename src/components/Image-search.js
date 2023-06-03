@@ -85,7 +85,7 @@ const handleSubmit = event => {
     setImages ([]);
     setPage(1); 
     fetchImages();
-    setSearchInitiated(true)
+    setSearchInitiated( query ? true : false)
 };
 
 return (
