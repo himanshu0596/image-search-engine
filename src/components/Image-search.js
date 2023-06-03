@@ -10,6 +10,7 @@ const [query, setQuery] = useState('');
 const [images, setImages] = useState ([]);
 const [page, setPage] = useState (1);
 const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+const [searchInitiated, setSearchInitiated] = useState(false)
 
 useEffect(() => {
     // Fetch initial images when the component mounts 
@@ -39,6 +40,7 @@ useEffect(()=>{
             setImages ([]);
             setPage(1); 
             fetchImages();
+            setSearchInitiated(true)
         }
     }, 500)
     
@@ -72,27 +74,31 @@ const handleSubmit = event => {
     setImages ([]);
     setPage(1); 
     fetchImages();
+    setSearchInitiated(true)
 };
 
 return (
     <div>
         <Header handleSearchSubmit={handleSubmit} handleSearchChange={handlelnputChange} searchValue={query} paddingClass={screenWidth <= 900 && 'headerPaddingSmall'}/>
 
-        <InfiniteScroll
-            dataLength={images.length} next={fetchImages} hasMore={true}
-            loader={<h4>Loading..</h4>}
-        >
-            {
-                images.map(image => ( 
-                    <LazyImage 
-                    key={image.id}
-                    src={image.urls.regular} 
-                    alt={image.alt_description} 
-                    screenWidth={screenWidth}
-                    />
-                ))
-            } 
-        </InfiniteScroll>
+        { searchInitiated ?
+            <InfiniteScroll
+                dataLength={images.length} next={fetchImages} hasMore={true}
+                loader={<h4>Loading..</h4>}
+            >
+                {
+                    images.map(image => ( 
+                        <LazyImage 
+                        key={image.id}
+                        src={image.urls.regular} 
+                        alt={image.alt_description} 
+                        screenWidth={screenWidth}
+                        />
+                    ))
+                } 
+            </InfiniteScroll> :
+            <h4>Try to search an image...</h4>
+        }
     </div>
 )
  
