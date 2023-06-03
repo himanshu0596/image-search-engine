@@ -11,7 +11,7 @@ Features
 Technologies Used
 
 ## Installation
-Clone the repository: git clone https://github.com/himanshu0596/image-search-engine.git.\
+Clone the repository: git clone https://github.com/himanshu0596/image-search-engine.git .\
 Install dependencies: npm install
 
 ## Usage
