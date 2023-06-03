@@ -1,5 +1,5 @@
 .headerStyle {
-  background-color: #333;
+  background-color: black;
   padding: 10px 0;
 }
 
@@ -26,12 +26,19 @@
   margin-right: 10px;
 }
 
+.inputStyle:focus-visible {
+  outline-offset: 1px;
+  outline-color: white;
+  outline-style: double;
+}
+
 .buttonStyle {
   padding: 5px 10px;
-  background-color: #777;
+  background-color: #333;
   color: #fff;
   border: none;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .headerPaddingSmall {
