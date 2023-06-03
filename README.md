@@ -11,14 +11,14 @@ Features
 Technologies Used
 
 ## Installation
-Clone the repository: git clone https://github.com/himanshu0596/image-search-engine.git
+Clone the repository: git clone https://github.com/himanshu0596/image-search-engine.git.\
 Install dependencies: npm install
 
 ## Usage
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.\
 Type the query in search bar for the images you want to search for example dog, cat or building.
 
 The page will reload when you make changes.\
