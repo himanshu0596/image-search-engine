@@ -2,7 +2,6 @@ import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import ImageSearch from "./Image-search";
 import axios from "axios";
-import nock from "nock";
 import MockAdapter from "axios-mock-adapter";
 
 // Mock the console error method
@@ -77,7 +76,11 @@ describe("ImageSearch", () => {
 
     // Check if the header is rendered
     expect(screen.getByTestId("header")).toBeInTheDocument();
+
+    // Check if welcome page is rendered and message "Welcome..." is diplayed
     expect(screen.getByText("Welcome...")).toBeInTheDocument();
+
+    // Check if welcome page is rendered and message "Please try to search an image using the search bar on top." is diplayed
     expect(
       screen.getByText(
         "Please try to search an image using the search bar on top."
